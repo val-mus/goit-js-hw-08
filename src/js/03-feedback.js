@@ -6,7 +6,7 @@ const refs = {
 };
 
 const userData = {};
-z
+
 
 populateForm();
 
@@ -28,7 +28,7 @@ function onInput(e) {
 }
 
 function populateForm() {
- 
+  const userInput = localStorage.getItem('feedback-form-state');
   if (userInput) {
     
     refs.emailInput.textContent = JSON.parse(userInput).email;
