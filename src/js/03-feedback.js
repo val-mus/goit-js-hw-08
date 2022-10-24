@@ -31,7 +31,7 @@ function populateForm() {
   if (userInput) {
     
     refs.emailInput.textContent = JSON.parse(userInput).email;
-    
+
     refs.textareaInput.textContent = JSON.parse(userInput).message;
   
   }
