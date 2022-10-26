@@ -7,7 +7,6 @@ const refs = {
 
 const userData = {};
 
-
 populateForm();
 
 refs.form.addEventListener('submit', onFormSubmit);
@@ -17,7 +16,7 @@ refs.form.addEventListener('input', throttle(onInput, 500));
 function onFormSubmit(e) {
   e.preventDefault();
   console.log(userData);
-  refs.textareaInput.textContent = "";
+  refs.textareaInput.textContent = '';
   e.target.reset();
   localStorage.removeItem('feedback-form-state');
 }
@@ -30,10 +29,8 @@ function onInput(e) {
 function populateForm() {
   const userInput = localStorage.getItem('feedback-form-state');
   if (userInput) {
-    
     refs.emailInput.textContent = JSON.parse(userInput).email;
 
     refs.textareaInput.textContent = JSON.parse(userInput).message;
-  
   }
 }
