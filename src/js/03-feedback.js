@@ -4,12 +4,8 @@ const refs = {
   emailInput: document.querySelector('.feedback-form input'),
   textareaInput: document.querySelector('.feedback-form textarea'),
 };
-
-populateForm();
-
-
 const userData = {};
-
+populateForm();
 
 refs.form.addEventListener('submit', onFormSubmit);
 
@@ -23,16 +19,19 @@ function onFormSubmit(e) {
 }
 
 function onInput(e) {
-  
   userData[e.target.name] = e.target.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(userData));
-  console.log(userData)
+  console.log(userData);
 }
 
 function populateForm() {
-  const userInput = localStorage.getItem('feedback-form-state');
+  let userInput = localStorage.getItem('feedback-form-state');
   if (userInput) {
-    refs.emailInput.value = JSON.parse(userInput).email;
-    refs.textareaInput.value = JSON.parse(userInput).message;
+    userInput = JSON.parse(userInput);
+    Object.entries(userInput).forEach(([name, value]) => {
+      userData[name] = value;
+    });
+    refs.emailInput.value = userInput.email;
+    refs.textareaInput.value = userInput.message;
   }
 }
