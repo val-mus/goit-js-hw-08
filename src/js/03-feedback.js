@@ -26,6 +26,7 @@ function onInput(e) {
   
   userData[e.target.name] = e.target.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(userData));
+  console.log(userData)
 }
 
 function populateForm() {
